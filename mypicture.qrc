@@ -4,4 +4,5 @@
         <file>0.2.png</file>
         <file>0.3.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

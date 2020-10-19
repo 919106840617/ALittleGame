@@ -1,27 +1,21 @@
 #include "hero.h"
+#include <QPixmap>
 #include <QDebug>
 #define cout qDebug()<<"["<<__FILE__":"<<__LINE__<<"]"
 
-hero::hero(int x, int y, int xx, int yy, int b, int d, int a)
-    :character(x,y,xx,yy,b,d,a)
+hero::hero(int x, int y, int xx, int yy, int v, int b, int d, int a)
+    :character(x,y,xx,yy,v,b,d,a)
 {
-    move = false;
+    QImage Im;
+    Im.load(":/new/prefix1/0.1.png");
+    pix = QPixmap::fromImage(Im);
+    pix = pix.scaled(xx, yy, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    setPixmap(pix);
     prefx = new QVector<int>;
 }
-
-void hero::startMove()
+hero::~hero()
 {
-    move = true;
-}
-
-void hero::stopMove()
-{
-    move = false;
-}
-
-bool hero::isMove()
-{
-    return move;
+    delete prefx;
 }
 
 void hero::addPrefx(int fx)

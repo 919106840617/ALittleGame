@@ -1,7 +1,7 @@
 #include "character.h"
 
-character::character(int x, int y, int xx, int yy, int b, int d, int a)
-    :item(x, y, xx, yy), blood(b), defend(d), attack(a){}
+character::character(int x, int y, int xx, int yy, int v, int b, int d, int a)
+    :item(x, y, xx, yy, v), blood(b), defend(d), attack(a){}
 
 void character::hurt(int h)
 {

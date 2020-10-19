@@ -7,7 +7,7 @@ class character: public item
 {
     int blood, defend, attack;
 public:
-    character(int ,int, int, int, int, int, int);
+    character(int x, int y, int xx, int yy, int v, int b, int d, int a);
     void hurt(int h);
     void addBlood(int b);
     void addDefend(int d);

@@ -6,7 +6,7 @@
 
 #include <QMainWindow>
 #include <QKeyEvent>
-#include "hero.h"
+#include "game.h"
 
 class MainWindow : public QMainWindow
 {
@@ -21,7 +21,7 @@ protected:
     void keyReleaseEvent(QKeyEvent *event);
 
 private:
-    hero *a;
+    game* g;
 };
 
 #endif // MAINWINDOW_H

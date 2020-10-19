@@ -30,7 +30,8 @@ SOURCES += \
     character.cpp \
     enemy.cpp \
     bullet.cpp \
-    hero.cpp
+    hero.cpp \
+    game.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +39,10 @@ HEADERS += \
     character.h \
     enemy.h \
     bullet.h \
-    hero.h
+    hero.h \
+    game.h
 
 RESOURCES += \
     mypicture.qrc
+
+DISTFILES +=

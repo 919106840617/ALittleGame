@@ -2,16 +2,15 @@
 #define ITEM_H
 
 #include <QLabel>
-#include <QTimer>
+#include <QPixmap>
 
 class item: public QLabel
 {
-    QTimer *timer;
     int x, y, fx, v, xx, yy;//xy为位置，fx为运动方向，xxyy为大小
-    void updatePlace();
+    bool ismove;
 
 public:
-    item(int, int, int, int);
+    item(int x, int y, int xx, int yy, int v);
     ~item();
     int getx();
     int gety();
@@ -21,8 +20,12 @@ public:
     int getspeed();
     void setspeed(int v);
     void setfx(int fx);
+    void update();
     void start();
     void stop();
+    bool isMove();
+
+    QPixmap pix;
 };
 
 #endif // ITEM_H

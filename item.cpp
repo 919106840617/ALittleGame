@@ -1,20 +1,19 @@
 #include "item.h"
 
-item::item(int x, int y, int xx, int yy)
+item::item(int x, int y, int xx, int yy, int v)
 {
     this->x = x;
     this->y = y;
     this->xx = xx;
     this->yy = yy;
-
-    timer = new QTimer();
-    connect(timer, &QTimer::timeout, this, &item::updatePlace);
-    timer->setSingleShot(0);
+    this->v = v;
+    ismove = false;
+    move(x, y);
+    resize(xx, yy);
 }
 
 item::~item()
 {
-    delete timer;
 }
 
 int item::getx()
@@ -52,9 +51,27 @@ void item::setspeed(int v)
 void item::setfx(int fx)
 {
     this->fx = fx;
+    QMatrix matrix;
+    switch (fx) {
+    case 0:
+        matrix.rotate(90);
+        break;
+    case 1:
+        matrix.rotate(0);
+        break;
+    case 2:
+        matrix.rotate(270);
+        break;
+    case 3:
+        matrix.rotate(180);
+        break;
+    default:
+        break;
+    }
+    setPixmap(pix.transformed(matrix, Qt::SmoothTransformation));
 }
 
-void item::updatePlace()
+void item::update()
 {
     switch (fx)
     {
@@ -74,25 +91,15 @@ void item::updatePlace()
 
 void item::start()
 {
-    switch (fx)
-    {
-    case 0:
-        x += v;break;
-    case 1:
-        y -= v;break;
-    case 2:
-        x -= v;break;
-    case 3:
-        y += v;break;
-    default:
-        break;
-    }
-    move(x, y);
-    timer->start(10);
+    ismove = true;
 }
 
 void item::stop()
 {
-    timer->stop();
+    ismove = false;
 }
 
+bool item::isMove()
+{
+    return ismove;
+}

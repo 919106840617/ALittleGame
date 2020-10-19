@@ -6,14 +6,11 @@
 
 class hero: public character
 {
-    bool move;
     QVector<int> *prefx;
 
 public:
-    hero(int x, int y, int xx, int yy, int b, int d, int a);
-    void startMove();
-    void stopMove();
-    bool isMove();
+    hero(int x, int y, int xx, int yy, int v, int b, int d, int a);
+    ~hero();
     void addPrefx(int fx);
     void removePrefx(int fx);
     bool isPrefx();

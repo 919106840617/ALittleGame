@@ -8,17 +8,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     this->setWindowTitle("our litle game");
     this->resize(gameWide, gameLength);
-    a = new hero(10,10,40,40,20,20,20);
-    a->setParent(this);
-    a->setPixmap(QPixmap(":/new/prefix1/0.1.png"));
-    a->setScaledContents(true);
-    a->setGeometry(a->getx(), a->gety(), a->getxx(), a->getyy());
-    a->setspeed(2);
+    g = new game(this);
+    g->show();
 }
 
 MainWindow::~MainWindow()
 {
-    delete a;
+    delete g;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -28,37 +24,32 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         switch (event->key()) {
         case Qt::Key_W:
         {
-            if (a->isMove())
-                a->addPrefx(a->getfx());
-            a->setfx(1);
+            g->keypress_w();
             break;
         }
         case Qt::Key_A:
         {
-            if (a->isMove())
-                a->addPrefx(a->getfx());
-            a->setfx(2);
+            g->keypress_a();
             break;
         }
         case Qt::Key_S:
         {
-            if (a->isMove())
-                a->addPrefx(a->getfx());
-            a->setfx(3);
+            g->keypress_s();
             break;
         }
         case Qt::Key_D:
         {
-            if (a->isMove())
-                a->addPrefx(a->getfx());
-            a->setfx(0);
+            g->keypress_d();
+            break;
+        }
+        case Qt::Key_J:
+        {
+            g->keypress_j();
             break;
         }
         default:
             break;
         }
-        a->start();
-        a->startMove();
     }
 }
 
@@ -69,86 +60,22 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
         switch (event->key()) {
         case Qt::Key_W:
         {
-            if (a->getfx()==1)
-            {
-                if (a->isPrefx())
-                {
-                    a->setfx(a->getPrefx());
-                    a->removePrefx(a->getPrefx());
-                }
-                else
-                {
-                    a->stop();
-                    a->stopMove();
-                }
-            }
-            else
-            {
-                a->removePrefx(1);
-            }
+            g->keyrelease_w();
             break;
         }
         case Qt::Key_A:
         {
-            if (a->getfx()==2)
-            {
-                if (a->isPrefx())
-                {
-                    a->setfx(a->getPrefx());
-                    a->removePrefx(a->getPrefx());
-                }
-                else
-                {
-                    a->stop();
-                    a->stopMove();
-                }
-            }
-            else
-            {
-                a->removePrefx(2);
-            }
+            g->keyrelease_a();
             break;
         }
         case Qt::Key_S:
         {
-            if (a->getfx()==3)
-            {
-                if (a->isPrefx())
-                {
-                    a->setfx(a->getPrefx());
-                    a->removePrefx(a->getPrefx());
-                }
-                else
-                {
-                    a->stop();
-                    a->stopMove();
-                }
-            }
-            else
-            {
-                a->removePrefx(3);
-            }
+            g->keyrelease_s();
             break;
         }
         case Qt::Key_D:
         {
-            if (a->getfx()==0)
-            {
-                if (a->isPrefx())
-                {
-                    a->setfx(a->getPrefx());
-                    a->removePrefx(a->getPrefx());
-                }
-                else
-                {
-                    a->stop();
-                    a->stopMove();
-                }
-            }
-            else
-            {
-                a->removePrefx(0);
-            }
+            g->keyrelease_d();
             break;
         }
         default:
