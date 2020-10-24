@@ -1,7 +1,13 @@
 #include "character.h"
 
 character::character(int x, int y, int xx, int yy, int v, int b, int d, int a)
-    :item(x, y, xx, yy, v), blood(b), defend(d), attack(a){}
+    :item(x, y, xx, yy, v)
+{
+    blood = b;
+    defend = d;
+    attack = a;
+}
+
 
 void character::hurt(int h)
 {
@@ -28,11 +34,6 @@ void character::addAttack(int a)
         attack = 0;
 }
 
-bool character::isAlive()
-{
-    return blood > 0;
-}
-
 void character::setBlood(int b)
 {
     blood = b;
@@ -44,4 +45,48 @@ void character::setDefend(int d)
 void character::setAttack(int a)
 {
     attack = a;
+}
+int character::getAttack()
+{
+    return attack;
+}
+
+bool character::isAlive()
+{
+    return blood > 0;
+}
+
+void character::dead()
+{
+    static int num = 0;
+    switch (num) {
+    case 0:
+    {
+        setPic(":/new/prefix1/picture/boom_1.png",0);
+        break;
+    }
+    case 1:
+    {
+        setPic(":/new/prefix1/picture/boom_1.png",0);
+        break;
+    }
+    case 2:
+    {
+        setPic(":/new/prefix1/picture/boom_1.png",0);
+        break;
+    }
+    case 3:
+    {
+        setPic(":/new/prefix1/picture/boom_1.png",0);
+        break;
+    }
+    case 4:
+    {
+        setPic(":/new/prefix1/picture/boom_1.png",0);
+        break;
+    }
+    default:
+        break;
+    }
+    num++;
 }

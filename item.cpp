@@ -73,20 +73,23 @@ void item::setfx(int fx)
 
 void item::update()
 {
-    switch (fx)
+    if (ismove)
     {
-    case 0:
-        x += v;break;
-    case 1:
-        y -= v;break;
-    case 2:
-        x -= v;break;
-    case 3:
-        y += v;break;
-    default:
-        break;
+        switch (fx)
+        {
+        case 0:
+            x += v;break;
+        case 1:
+            y -= v;break;
+        case 2:
+            x -= v;break;
+        case 3:
+            y += v;break;
+        default:
+            break;
+        }
+        move(x, y);
     }
-    move(x, y);
 }
 
 void item::start()
@@ -102,4 +105,28 @@ void item::stop()
 bool item::isMove()
 {
     return ismove;
+}
+
+bool item::isCrash(item* a)
+{
+    int w = this->getx() - a->getx();
+    int l = this->gety() - a->gety();
+    if ((w<a->getxx()&&w>-this->getxx())&&(l<a->getyy()&&l>-this->getyy()))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void item::setPic(QString str, int fx)
+{
+    QImage Im;
+    Im.load(str);
+    pix = QPixmap::fromImage(Im);
+    pix = pix.scaled(xx, yy, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    setPixmap(pix);
+    setfx(fx);
 }

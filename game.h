@@ -8,6 +8,7 @@
 #include <QList>
 #include "hero.h"
 #include "bullet.h"
+#include "enemy.h"
 
 class game : public QWidget
 {
@@ -23,12 +24,14 @@ public:
     void keyrelease_s();
     void keyrelease_d();
     void keypress_j();
-    void keyrelease_j();
-    void update();
-    void check();
+    void update();//更新状态
+    void check();//检测碰撞
+    void shoot(enemy* e);//敌人发射子弹
+    void addEnemy();
 
 private:
     QList<bullet*> *bul;
+    QList<enemy*> *ene;
     QTimer *timer;
     hero *a;
 };

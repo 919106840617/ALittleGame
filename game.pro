@@ -42,7 +42,8 @@ HEADERS += \
     hero.h \
     game.h
 
-RESOURCES += \
-    mypicture.qrc
 
 DISTFILES +=
+
+RESOURCES += \
+    resource.qrc

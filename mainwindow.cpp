@@ -47,6 +47,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             g->keypress_j();
             break;
         }
+        case Qt::Key_P:
+        {
+            g->addEnemy();
+            break;
+        }
         default:
             break;
         }

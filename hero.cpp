@@ -3,14 +3,10 @@
 #include <QDebug>
 #define cout qDebug()<<"["<<__FILE__":"<<__LINE__<<"]"
 
-hero::hero(int x, int y, int xx, int yy, int v, int b, int d, int a)
+hero::hero(int x, int y, int xx, int yy, int fx, int v, int b, int d, int a)
     :character(x,y,xx,yy,v,b,d,a)
 {
-    QImage Im;
-    Im.load(":/new/prefix1/0.1.png");
-    pix = QPixmap::fromImage(Im);
-    pix = pix.scaled(xx, yy, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-    setPixmap(pix);
+    setPic(":/new/prefix1/picture/TANK2_1.png",fx);//默认机甲图片朝上
     prefx = new QVector<int>;
 }
 hero::~hero()

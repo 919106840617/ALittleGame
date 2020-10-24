@@ -10,7 +10,7 @@ class item: public QLabel
     bool ismove;
 
 public:
-    item(int x, int y, int xx, int yy, int v);
+    item(int x, int y, int xx, int yy, int v);//初始化位置大小及速度
     ~item();
     int getx();
     int gety();
@@ -20,10 +20,12 @@ public:
     int getspeed();
     void setspeed(int v);
     void setfx(int fx);
-    void update();
-    void start();
-    void stop();
-    bool isMove();
+    void update();//更新位置
+    void start();//转到运动状态
+    void stop();//停止运动状态
+    bool isMove();//检测运动状态
+    bool isCrash(item* a);//检测与a是否碰撞
+    void setPic(QString str, int fx);//初始化图片及方向
 
     QPixmap pix;
 };

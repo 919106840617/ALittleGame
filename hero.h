@@ -9,7 +9,7 @@ class hero: public character
     QVector<int> *prefx;
 
 public:
-    hero(int x, int y, int xx, int yy, int v, int b, int d, int a);
+    hero(int x, int y, int xx, int yy, int fx, int v, int b, int d, int a);
     ~hero();
     void addPrefx(int fx);
     void removePrefx(int fx);
