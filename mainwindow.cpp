@@ -6,20 +6,30 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    this->setWindowTitle("our litle game");
-    this->resize(gameWide, gameLength);
-    g = new game(this);
-    g->show();
+    setWindowTitle("our litle game");
+    setFixedSize(gameWide, gameLength);
+
+    g = nullptr;
+    menu = new startmenu(this);
+    menu->show();
+    connect(menu,SIGNAL(gamestart()),this,SLOT(gamestart()));
 }
 
 MainWindow::~MainWindow()
 {
-    delete g;
+    if (g!=nullptr)
+    {
+        delete g;
+    }
+    if (menu!=nullptr)
+    {
+        delete menu;
+    }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if (!event->isAutoRepeat())
+    if (!event->isAutoRepeat()&&g!=nullptr)
     {
         switch (event->key()) {
         case Qt::Key_W:
@@ -60,7 +70,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
-    if (!event->isAutoRepeat())
+    if (!event->isAutoRepeat()&&g!=nullptr)
     {
         switch (event->key()) {
         case Qt::Key_W:
@@ -89,4 +99,24 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
+void MainWindow::gameOver(int score)
+{
+    g->deleteLater();
+    g = nullptr;
+//    cout<<"delete success";
+    menu = new startmenu(this);
+    menu->show();
+    connect(menu,SIGNAL(gamestart()),this,SLOT(gamestart()));
+//    cout<<score;
+}
 
+void MainWindow::gamestart()
+{
+//    cout<<"start begin";
+    g = new game(this);
+    g->show();
+    connect(g,SIGNAL(gameover(int)),this,SLOT(gameOver(int)));
+    menu->deleteLater();
+    menu = nullptr;
+//    cout<<"start over";
+}

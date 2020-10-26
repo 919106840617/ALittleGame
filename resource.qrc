@@ -10,25 +10,18 @@
         <file>picture/home_1.png</file>
         <file>picture/home_2.png</file>
         <file>picture/TANK1_1.png</file>
-        <file>picture/TANK1_2.png</file>
-        <file>picture/TANK1_3.png</file>
         <file>picture/TANK2_1.png</file>
-        <file>picture/TANK2_2.png</file>
-        <file>picture/TANK2_3.png</file>
         <file>picture/TANK3_1.png</file>
-        <file>picture/TANK3_2.png</file>
-        <file>picture/TANK3_3.png</file>
         <file>picture/TANK4_1.png</file>
-        <file>picture/TANK4_2.png</file>
-        <file>picture/TANK4_3.png</file>
         <file>picture/TANK5_1.png</file>
-        <file>picture/TANK5_2.png</file>
-        <file>picture/TANK5_3.png</file>
         <file>picture/TANK6_1.png</file>
-        <file>picture/TANK6_2.png</file>
-        <file>picture/TANK6_3.png</file>
         <file>picture/wall_1.png</file>
         <file>picture/wall_2.png</file>
         <file>picture/wall_3.png</file>
+        <file>picture/start.png</file>
+        <file>picture/startpushbutton.png</file>
+        <file>picture/score_1.png</file>
+        <file>picture/bullet.png</file>
+        <file>picture/floot_1.jpg</file>
     </qresource>
 </RCC>

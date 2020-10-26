@@ -6,6 +6,7 @@ character::character(int x, int y, int xx, int yy, int v, int b, int d, int a)
     blood = b;
     defend = d;
     attack = a;
+    deadnum = 0;
 }
 
 
@@ -56,37 +57,39 @@ bool character::isAlive()
     return blood > 0;
 }
 
-void character::dead()
+bool character::dead()
 {
-    static int num = 0;
-    switch (num) {
-    case 0:
+    int i = 10;
+    int fx = 1;
+    if (deadnum<i)
     {
-        setPic(":/new/prefix1/picture/boom_1.png",0);
-        break;
+        setPic(":/new/prefix1/picture/boom_1.png",fx);
     }
-    case 1:
+    else if (deadnum<i*2)
     {
-        setPic(":/new/prefix1/picture/boom_1.png",0);
-        break;
+        setPic(":/new/prefix1/picture/boom_2.png",fx);
     }
-    case 2:
+    else if (deadnum<i*3)
     {
-        setPic(":/new/prefix1/picture/boom_1.png",0);
-        break;
+        setPic(":/new/prefix1/picture/boom_3.png",fx);
     }
-    case 3:
+    else if (deadnum<i*4)
     {
-        setPic(":/new/prefix1/picture/boom_1.png",0);
-        break;
+        setPic(":/new/prefix1/picture/boom_4.png",fx);
     }
-    case 4:
+    else if (deadnum<i*5)
     {
-        setPic(":/new/prefix1/picture/boom_1.png",0);
-        break;
+        setPic(":/new/prefix1/picture/boom_5.png",fx);
     }
-    default:
-        break;
+    else if (deadnum<i*6)
+    {
+        return true;
     }
-    num++;
+    deadnum++;
+    return false;
+}
+
+int character::getBlood()
+{
+    return blood;
 }

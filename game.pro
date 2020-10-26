@@ -31,7 +31,8 @@ SOURCES += \
     enemy.cpp \
     bullet.cpp \
     hero.cpp \
-    game.cpp
+    game.cpp \
+    startmenu.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     enemy.h \
     bullet.h \
     hero.h \
-    game.h
+    game.h \
+    startmenu.h
 
 
 DISTFILES +=

@@ -7,6 +7,7 @@
 #include <QMainWindow>
 #include <QKeyEvent>
 #include "game.h"
+#include "startmenu.h"
 
 class MainWindow : public QMainWindow
 {
@@ -22,6 +23,11 @@ protected:
 
 private:
     game* g;
+    startmenu* menu;
+
+private slots:
+    void gameOver(int score);
+    void gamestart();
 };
 
 #endif // MAINWINDOW_H

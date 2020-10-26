@@ -7,6 +7,13 @@ bullet::bullet(int x, int y, int xx, int yy, int fx, int v, int a)
     setspeed(v);
     attack = a;
     start();
+    if (fx==1||fx==3)
+    {
+        int n = xx;
+        xx = yy;
+        yy = n;
+    }
+    setPic(":/new/prefix1/picture/bullet.png",fx);
 }
 bullet::~bullet()
 {

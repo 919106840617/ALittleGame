@@ -5,9 +5,12 @@
 
 class enemy: public character
 {
+    bool shoot;
+    int cd, time;
 public:
-    enemy(int x, int y, int xx, int yy, int fx, int v, int b, int d, int a);
-    void seek(int x, int y);//方向朝xy
+    enemy(int x, int y, int xx, int yy, int k);//k=0,1,2
+    void seek(int x, int y, int xx, int yy);
+    bool isShoot();
 };
 
 #endif // ENEMY_H

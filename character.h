@@ -5,7 +5,7 @@
 
 class character: public item
 {
-    int blood, defend, attack;
+    int blood, defend, attack, deadnum;
 public:
     character(int x, int y, int xx, int yy, int v, int b, int d, int a);
     void hurt(int h);//受伤
@@ -17,7 +17,9 @@ public:
     void setAttack(int a);
     int getAttack();
     bool isAlive();//检测血量
-    void dead();
+    bool dead();
+
+    int getBlood();
 };
 
 #endif // CHARACTER_H
