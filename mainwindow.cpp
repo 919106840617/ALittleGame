@@ -6,6 +6,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    grabKeyboard();
     setWindowTitle("our litle game");
     setFixedSize(gameWide, gameLength);
 
@@ -103,11 +104,8 @@ void MainWindow::gameOver(int score)
 {
     g->deleteLater();
     g = nullptr;
-//    cout<<"delete success";
-    menu = new startmenu(this);
+    menu->addScore(score);
     menu->show();
-    connect(menu,SIGNAL(gamestart()),this,SLOT(gamestart()));
-//    cout<<score;
 }
 
 void MainWindow::gamestart()
@@ -116,7 +114,5 @@ void MainWindow::gamestart()
     g = new game(this);
     g->show();
     connect(g,SIGNAL(gameover(int)),this,SLOT(gameOver(int)));
-    menu->deleteLater();
-    menu = nullptr;
 //    cout<<"start over";
 }

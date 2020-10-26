@@ -3,12 +3,15 @@
 #include <QTransform>
 #include <QDebug>
 #include <QMessageBox>
+#include <QTime>
 
 #define cout qDebug()<<"["<<__FILE__":"<<__LINE__<<"]"
 
 game::game(QWidget *parent)
     :QWidget(parent)
 {
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+
     resize(gameWide, gameLength);
 
     score = 0;
@@ -81,6 +84,8 @@ game::~game()
 
 void game::keypress_w()
 {
+    if (!a->isAlive())
+        return;
     if (a->isMove())
         a->addPrefx(a->getfx());
     a->setfx(1);
@@ -88,6 +93,8 @@ void game::keypress_w()
 }
 void game::keypress_a()
 {
+    if (!a->isAlive())
+        return;
     if (a->isMove())
         a->addPrefx(a->getfx());
     a->setfx(2);
@@ -95,6 +102,8 @@ void game::keypress_a()
 }
 void game::keypress_s()
 {
+    if (!a->isAlive())
+        return;
     if (a->isMove())
         a->addPrefx(a->getfx());
     a->setfx(3);
@@ -102,6 +111,8 @@ void game::keypress_s()
 }
 void game::keypress_d()
 {
+    if (!a->isAlive())
+        return;
     if (a->isMove())
         a->addPrefx(a->getfx());
     a->setfx(0);

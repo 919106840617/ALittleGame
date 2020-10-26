@@ -10,7 +10,7 @@ class enemy: public character
 public:
     enemy(int x, int y, int xx, int yy, int k);//k=0,1,2
     void seek(int x, int y, int xx, int yy);
-    bool isShoot();
+    bool isShoot();//
 };
 
 #endif // ENEMY_H

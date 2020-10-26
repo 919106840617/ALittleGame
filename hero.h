@@ -16,7 +16,8 @@ public:
     void removePrefx(int fx);
     bool isPrefx();
     int getPrefx();
-    void levelUp();
+
+    void levelUp();//升级加属性
 
 };
 

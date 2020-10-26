@@ -7,6 +7,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QList>
+#include <QtAlgorithms>
+#include <QLabel>
 
 class startmenu : public QWidget
 {
@@ -15,16 +17,16 @@ public:
     startmenu(QWidget *parent);
     ~startmenu();
 
+    void addScore(int s);//把上把分数加进去
+    void showScore();
+
 private:
-    QPushButton *p;
+    QPushButton *p, *showsco;
 
     QList<int> sco;
 
 signals:
     void gamestart();
-    void addScore(int s);
-    void showScore();
-    bool subListSort(int info1, int info2);
 };
 
 #endif // STARTMENU_H

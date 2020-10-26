@@ -23,5 +23,7 @@
         <file>picture/score_1.png</file>
         <file>picture/bullet.png</file>
         <file>picture/floot_1.jpg</file>
+        <file>picture/score_2.png</file>
+        <file>picture/score_3.png</file>
     </qresource>
 </RCC>

@@ -17,7 +17,7 @@ public:
     void setAttack(int a);
     int getAttack();
     bool isAlive();//检测血量
-    bool dead();
+    bool dead();//播放死亡动画
 
     int getBlood();
 };

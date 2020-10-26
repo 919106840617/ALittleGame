@@ -14,13 +14,21 @@ startmenu::startmenu(QWidget *parent)
 
     p = new QPushButton("",this);
     p->resize(200,80);
-    p->move((gameWide-p->width())/2,(gameLength)/3*2+50);
+    p->move((gameWide-p->width())/2,(gameLength)/3*2);
 
     p->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/picture/startpushbutton.png)}");
     p->show();
 
+    showsco = new QPushButton("",this);
+    showsco->resize(200,80);
+    showsco->move((gameWide-p->width())/2,(gameLength)/3*2+100);
+
+    showsco->setStyleSheet("QPushButton{border-image: url(:/new/prefix1/picture/score_2.png)}");
+    showsco->show();
 
     connect(p,&QPushButton::clicked,[=](){emit gamestart();});
+
+    connect(showsco,&QPushButton::clicked,this,&startmenu::showScore);
 }
 
 startmenu::~startmenu()
@@ -31,23 +39,40 @@ startmenu::~startmenu()
 void startmenu::addScore(int s)
 {
     sco.append(s);
-    qSort(sco.begin(),sco.end(),subListSort);
+    std::sort(sco.begin(),sco.end());
     if (sco.size()>3)
     {
-        sco.removeLast();
+        sco.removeFirst();
     }
-}
-
-bool startmenu::subListSort(int info1, int info2)
-{
-    return info1 < info2;
- //return info1 < info2;
 }
 
 void startmenu::showScore()
 {
-    for (int i=0; i<sco.size(); i++)
+    QString str;
+    if (sco.isEmpty())
     {
-        cout<<sco.at(i)<<endl;
+        str = "无";
     }
+    else
+    {
+        for (int i=sco.size()-1; i>=0; i--)
+        {
+            str += "第" + QString::number(sco.size()-i)+"名: "+QString::number(sco.at(i))+"\n";
+        }
+    }
+    QWidget *mess = new QWidget;
+    mess->resize(300,400);
+    mess->setWindowTitle("HIGH SCORE");
+    mess->show();
+
+    QLabel *scoreboard = new QLabel(mess);
+    scoreboard->resize(mess->size());
+    scoreboard->move(0,0);
+    scoreboard->setStyleSheet("QLabel{border-image: url(:/new/prefix1/picture/score_3.png)}");
+
+    scoreboard->setText(str);
+    scoreboard->setAlignment(Qt::AlignCenter);QFont ft("Microsoft YaHei", 15);
+    scoreboard->setFont(ft);
+    scoreboard->show();
+
 }

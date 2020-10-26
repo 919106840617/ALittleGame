@@ -32,7 +32,7 @@ public:
     void check();//检测碰撞
     void shoot(enemy* e);//敌人发射子弹
     void addEnemy();
-    void dead();
+    void dead();//主角死亡及敌人死亡动画
 
 private:
     int score, up, level, enetime;

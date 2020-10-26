@@ -49,12 +49,12 @@ bool hero::isPrefx()
 
 void hero::levelUp()
 {
-    if (qrand() % 100<75)
+    if (qrand() % 100<50)
     {
-        maxblood = maxblood * 4 / 3;
+        maxblood = maxblood * 8 / 7;
         setBlood(maxblood);
     }
-    if (qrand() % 100<50)
+    if (qrand() % 100<30)
     {
         addAttack(3);
     }
@@ -63,7 +63,7 @@ void hero::levelUp()
     {
         setspeed(getspeed()+1);
     }
-    else if (qrand() % 100<25)
+    else if (qrand() % 100<5)
     {
         addDefend(1);
     }
